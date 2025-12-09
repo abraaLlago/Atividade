@@ -9,4 +9,6 @@ O Leviathan, apresentado no site, é uma banda de metal, com estética sombria e
 
 # Observações
 
-Embora o código CSS esteja em um arquivo próprio do projeto, foi-se colocado, também, uma parte dentro do arquivo HTML (index), pois, como é um código de um modelo programável - Bootstrap - havia código, e em excesso, no modelo escolhido. Dessa forma, tornou-se mais prático imputar o CSS personalizado - feito por nossa autoria - no HTML, já que também forçaria, o projeto no geral, a dar prioridade a esse novo CSS.
+1. Embora o código CSS esteja em um arquivo próprio do projeto, foi-se colocado, também, uma parte dentro do arquivo HTML ("index"), pois, como é um código de um modelo programável - Bootstrap - havia código, e em excesso, no modelo escolhido. Dessa forma, tornou-se mais prático imputar o CSS personalizado - feito por nossa autoria - no HTML, já que também forçaria, o projeto no geral, a dar prioridade a esse novo CSS.
+
+2. Há também, dentro do arquivo "index", alguns códigos java, com o mesmo objetivo anterior: forçar a prioridade.
