@@ -1,4 +1,6 @@
-# Leviathan - Site da Banda
+# Leviathan - Site da Banda - INFO30
+
+Trabalho feito por: Carlos Abraão e Iziane Sampaio
 
 Este site foi desenvolvido como uma atividade escolar, com o objetivo de praticar a criação de páginas web. Ele contém formulários fictícios, criados apenas para fins educacionais e demonstrativos.
 
