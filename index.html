@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+ <meta name="description" content="Leviathan" />
+ <meta name="author" content="Leviathan" />
+ <title>Leviathan - Official Website</title>
+
+    <style>
+        @font-face {
+            font-family: 'GregorianFLF';
+            src: url('assets/fonts/GregorianFLF.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+                @font-face {
+            font-family: 'Blackletter';
+            src: url('assets/fonts/BLACEB__.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+                }
+            
+        /* FONTE*/
+        #splash-text {
+            font-family: 'Times Ne';
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .navbar-brand {
+            font-family: 'GregorianFLF', serif !important;
+        }
+        
+        .gregorian-font {
+            font-family: 'GregorianFLF', serif !important;
+        }
+    </style>
+ 
+<style>
+   #splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: pointer;
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+#splash-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+    
+  .splash-exit {
+    opacity: 0;
+    transform: scale(1.2) rotate(5deg); 
+    filter: blur(10px);
+    pointer-events: none;
+    visibility: hidden;
+}
+    }
+</style>
+    
+    
+    
+    
+ <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+ <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+ 
+ <!-- Google Fonts -->
+ <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&display=swap" rel="stylesheet">
+ 
+ <!-- Bootstrap CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+ 
+ <style>
+ /* tema escuro */
+ body {
+ background-color: #121212;
+ color: #ffffff;
+ font-family: 'Cinzel', serif;
+ }
+
+ .navbar {
+ background-color: #121212;
+ padding: 15px 0;
+ transition: padding 0.3s;
+ }
+ 
+ .navbar.shrink {
+ padding: 5px 0;
+ }
+
+ .navbar .nav-link {
+ color: #ffffff;
+ margin: 0 10px;
+ position: relative;
+ }
+
+ .navbar .nav-link:after {
+ content: '';
+ position: absolute;
+ width: 0;
+ height: 2px;
+ background: #580707;
+ left: 0;
+ bottom: -5px;
+ transition: width 0.3s;
+ }
+
+ .navbar .nav-link:hover:after {
+ width: 100%;
+ }
+
+ .navbar-brand {
+ color: #ffffff;
+ font-size: 1.8rem;
+ }
+
+ .navbar-brand:hover {
+ color: #580707;
+ }
+
+ .about-section, .projects-section, .signup-section, .contact-section {
+ background-color: #121212;
+ }
+
+ .text-white-50 {
+ color: rgba(255, 255, 255, 0.5);
+ }
+
+ .btn-primary {
+ background-color: #580707;
+ border-color: #580707;
+ border-radius: 0;
+ padding: 12px 30px;
+ font-weight: bold;
+ }
+
+ .btn-primary:hover {
+ background-color: #580707;
+ border-color: #ffffff;
+ transform: translateY(-3px);
+ }
+
+ .card {
+ background-color: #2a2a2a;
+ color: #ffffff;
+ border: none;
+ border-radius: 0;
+ transition: transform 0.3s;
+ }
+
+ .card:hover {
+ transform: translateY(-5px);
+ }
+
+ .footer {
+ background-color: #1f1f1f;
+ padding: 30px 0;
+ }
+
+ /* Masthead */
+ .masthead {
+ background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('assets/img/JefPromo.jpg');
+ background-size: cover;
+ background-position: center;
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ text-align: center;
+ }
+
+ .masthead h1 {
+ font-size: 4rem;
+ margin-bottom: 1rem;
+ text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+ }
+
+ .masthead h2 {
+ font-size: 1.5rem;
+ margin-bottom: 2rem;
+ color: #580707;
+ }
+
+ /* Projects section */
+ .projects-section {
+ padding: 80px 0;
+ }
+
+ .featured-text {
+ padding: 20px;
+ }
+
+ .bg-black {
+ background-color: #000 !important;
+ }
+
+ .project {
+ display: flex;
+ height: 100%;
+ align-items: center;
+ }
+
+ /* Product items */
+ .product-item {
+ margin-bottom: 30px;
+ text-align: center;
+ }
+
+ .product-item img {
+ width: 100%;
+ transition: all 0.3s;
+ border: 2px solid #333;
+ }
+
+ .product-item:hover img {
+ transform: scale(1.05);
+ border-color: #580707;
+ }
+
+ .product-title {
+ margin-top: 15px;
+ font-size: 1.2rem;
+ color: #ffffff;
+ }
+
+ .product-price {
+ font-size: 1.1rem;
+ font-weight: bold;
+ }
+
+ /* Mensagem de não-shows */
+ .no-shows {
+ background-color: #2a2a2a;
+ padding: 20px;
+ text-align: center;
+ border-left: 5px solid #580707;
+ margin: 40px 0 20px;
+ font-size: 0.9rem;
+ }
+
+ /* contato */
+ .contact-section .card {
+ height: 100%;
+ }
+ 
+ .contact-section .card-body {
+ padding: 1.5rem;
+ }
+ 
+ .contact-section .fa-2x {
+ font-size: 1.8em;
+ margin-bottom: 15px;
+ }
+ 
+ .contact-section h4 {
+ margin-bottom: 15px;
+ }
+ 
+ .contact-section hr {
+ width: 50px;
+ margin: 15px auto;
+ height: 2px;
+ background-color: #580707;
+ opacity: 1;
+ }
+ 
+ /* redes sociais */
+ .social a {
+ display: inline-flex;
+ width: 45px;
+ height: 45px;
+ border-radius: 50%;
+ background: #2a2a2a;
+ color: white;
+ align-items: center;
+ justify-content: center;
+ margin: 0 8px;
+ transition: all 0.3s;
+ }
+
+ .social a:hover {
+ background: #580707;
+ transform: translateY(-5px);
+ }
+ 
+ /* formulário */
+ .form-signup {
+ margin-top: 20px;
+ }
+ 
+ .input-group-newsletter {
+ display: flex;
+ justify-content: center;
+ }
+ 
+ /* espaçamento geral */
+ section {
+ padding: 80px 0;
+ }
+ 
+ .signup-section {
+ padding: 60px 0;
+ }
+ </style>
+</head>
+
+
+<div id="splash-screen">
+    <video autoplay muted loop id="splash-video">
+        <source src="assets/video/lobotrve.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div id="splash-text"><img src="assets/img/cross.png" class="splimage" alt=""> </div>
+</div>
+
+<style>
+    .splimage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.3; 
+        z-index: 2;
+        max-width: 300px;
+        max-height: 300px;
+    }
+</style>
+
+<style>
+    #splash-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 1;
+    }
+    
+    #splash-text {
+        font-family: 'Blackletter', 'GregorianFLF', serif;
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: #fff;
+        z-index: 3;
+        position: relative;
+    }
+</style>
+    
+    
+    <!-- Modal de Compra -->
+<div class="modal fade" id="compraModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title" id="produtoNome">Produto</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formCompra">
+                    <div class="mb-3">
+                        <label class="form-label">Nome Completo</label>
+                        <input type="text" class="form-control bg-black text-white border-secondary" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">E-mail</label>
+                        <input type="email" class="form-control bg-black text-white border-secondary" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Endereço</label>
+                        <input type="text" class="form-control bg-black text-white border-secondary" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Cidade</label>
+                            <input type="text" class="form-control bg-black text-white border-secondary" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">CEP</label>
+                            <input type="text" class="form-control bg-black text-white border-secondary" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Forma de Pagamento</label>
+                        <select class="form-select bg-black text-white border-secondary">
+                            <option>Cartão de Crédito</option>
+                            <option>Cartão de Débito</option>
+                            <option>PIX</option>
+                            <option>Boleto</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Quantidade</label>
+                        <select class="form-select bg-black text-white border-secondary">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </form>
+                <div class="alert alert-info mt-3">
+                    <small>⚠️ Este é um formulário demonstrativo. Nenhuma compra real será processada.</small>
+                </div>
+            </div>
+            <div class="modal-footer border-secondary">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" onclick="finalizarCompra()">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .modal-content {
+        border: 1px solid #580707;
+        border-radius: 0;
+    }
+    
+    .form-control, .form-select {
+        border-radius: 0;
+    }
+    
+    .form-control:focus, .form-select:focus {
+        border-color: #580707;
+        box-shadow: 0 0 0 0.2rem rgba(88, 7, 7, 0.25);
+    }
+    
+    .alert-info {
+        background-color: #1a1a1a;
+        border-color: #580707;
+        color: #ccc;
+        border-radius: 0;
+    }
+</style>
+
+<script>
+    // Variável para armazenar o produto selecionado
+    let produtoSelecionado = '';
+    
+    // Função para abrir o modal de compra
+    function abrirModalCompra(produto, preco) {
+        produtoSelecionado = produto;
+        document.getElementById('produtoNome').textContent = produto + ' - ' + preco;
+        var compraModal = new bootstrap.Modal(document.getElementById('compraModal'));
+        compraModal.show();
+    }
+    
+    // Função para finalizar a compra (fake)
+    function finalizarCompra() {
+        alert(' Compra realizada com sucesso!\n\n' +
+              'Produto: ' + produtoSelecionado + '\n' +
+              'Em breve você receberá um e-mail com os detalhes.\n\n' +
+              '⚠️ É apenas uma demonstração fictícia.');
+        
+        // Fecha o modal
+        var compraModal = bootstrap.Modal.getInstance(document.getElementById('compraModal'));
+        compraModal.hide();
+        
+        // Limpa o formulário
+        document.getElementById('formCompra').reset();
+    }
+    
+    // Adiciona os event listeners aos botões de compra
+    document.addEventListener('DOMContentLoaded', function() {
+        const botoesCompra = document.querySelectorAll('.btn-primary.btn-sm');
+        botoesCompra.forEach((botao, index) => {
+            botao.addEventListener('click', function() {
+                const produto = this.closest('.product-item').querySelector('.product-title').textContent;
+                const preco = this.closest('.product-item').querySelector('.product-price').textContent;
+                abrirModalCompra(produto, preco);
+            });
+        });
+    });
+</script>
+
+
+
+<body id="page-top">
+ <!-- Navigation-->
+ <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+ <div class="container px-4 px-lg-5">
+ <a class="navbar-brand" href="#page-top">Leviathan</a>
+
+ <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+ data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+ aria-label="Toggle navigation">
+ Menu <i class="fas fa-bars"></i>
+ </button>
+
+ <div class="collapse navbar-collapse" id="navbarResponsive">
+ <ul class="navbar-nav ms-auto">
+ <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+ <li class="nav-item"><a class="nav-link" href="#projects">Início</a></li>
+ <li class="nav-item"><a class="nav-link" href="#produtos">Produtos</a></li>
+ <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
+ </ul>
+ </div>
+ </div>
+ </nav>
+ 
+ <!-- Masthead-->
+ <header class="masthead">
+ <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+ <div class="d-flex justify-content-center">
+ <div class="text-center">
+ <h1 class="navbar-brand gregorian-font mx-auto my-0 text-uppercase">Leviathan</h1>
+ <h2 class="text-white-50 mx-auto mt-2 mb-5">A dissonância do submundo</h2>
+ <a class="btn btn-primary" href="#about">Bem-vindo a Leviathan</a>
+ </div>
+ </div>
+ </div>
+ </header>
+ 
+ <!-- About-->
+ <section class="about-section text-center" id="about">
+ <div class="container px-4 px-lg-5">
+ <div class="row gx-4 gx-lg-5 justify-content-center">
+ <div class="col-lg-8">
+ <h2 class="text-white mb-4">Sobre</h2>
+ <p class="text-white-50">
+ Nascida para ecoar os gritos do submersos da alma, a banda <span style="color: ghostwhite"><b>Leviathan</b></span> combina peso, agressividade e melodia sombria em cada canção. Nossa música é mais que som: é catarse, 
+ é libertação, é a essência do metal pesado convertida em misantropia...
+ </p>
+ <p class="text-white"> Stay Trve ᛉ</p> 
+ <p class="text-white"> </p> 
+ <br>
+ <img class="mx-auto d-block img-fluid" src="assets/img/ipad.png" alt="..." style="max-width:400px; padding: 10px; margin-top: -30px;"/>
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+ <!-- Projects-->
+ <section class="projects-section" id="projects">
+ <div class="container px-4 px-lg-5">
+ <!-- Featured Project Row-->
+ <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
+ <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/JefPromo.jpg" alt="..." /></div>
+ <div class="col-xl-4 col-lg-5">
+ <div class="featured-text text-center text-lg-left">
+ <h4 class="text-white">Loja Oficial</h4>
+ 
+  <p class="text-white-45 mb-0">Entre nas profundezas do som e leve para casa as escamas do Leviathan!</p>
+ <a class="btn btn-primary mt-3" href="#produtos">Ver Produtos</a>
+ </div>
+ </div>
+ </div>
+ <!-- Project One Row-->
+ <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+ <div class="col-lg-6"><img class="img-fluid" src="assets/img/Speed.jpg" alt="..." width="1000px" height="500px" /></div>
+ <div class="col-lg-6">
+
+ <div class="bg-black text-center h-100 project">
+ <div class="d-flex h-100">
+ <div class="project-text w-100 my-auto text-center text-lg-left">
+ <h4 class="text-white">Abyssal Sounds</h4>
+ <p class="mb-0 text-white-50">Em nosso mais recente álbum, mergulhe nas profundezas do som, subemergindo entre 9 faixas que convertem riffs temáticos na mais pura expressão inumana-humana</p>
+ <button class="btn btn-primary mt-3"><a href="https://youtu.be/1ZaCst-ZoYg?si=RVVin4KejuHDv88_" class="text-white" style="text-decoration: none" >Ouvir Agora</a></button>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- Project Two Row-->
+ <div class="row gx-0 justify-content-center">
+ <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="..." /></div>
+ <div class="col-lg-6 order-lg-first">
+ <div class="bg-black text-center h-100 project">
+ <div class="d-flex h-100">
+ <div class="project-text w-100 my-auto text-center text-lg-right">
+ <h4 class="text-white">Discografia Completa</h4>
+ <p class="mb-0 text-white-50">Explore nossa jornada musical desde as primeiras demo tapes até os mais recentes lançamentos.</p>
+ <button class="btn btn-primary mt-3"><a href="https://youtube.com/playlist?list=PL2Vja6iSCF5C2Kdj9YLscJUJZDjZW4vJj&si=4uI1pXLHMryuwAla" class="text-white" style="text-decoration: none" >Explorar</a></button>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+ <!-- Produtos -->
+ <section class="projects-section bg-black" id="produtos">
+ <div class="container px-4 px-lg-5">
+ <div class="row mb-5">
+ <div class="col-lg-12 text-center">
+ <h2 class="text-white mb-4">Produtos</h2>
+ <p class="text-white-50">O monstro morto há de ser consumido... leve para casa algumas das escamas do Leviathan!</p>
+ </div>
+ </div>
+ 
+ <div class="row">
+ <div class="col-md-3 col-sm-6 mb-4">
+ <div class="product-item">
+ <img src="assets/img/demo-image-01.jpg" alt="Camiseta Leviathan" class="img-fluid">
+ <h4 class="product-title">LEVIATHAN "CHAINS OF ICE" SHIRT</h4>
+ <p class="product-price">R$ 59,90</p>
+ <button class="btn btn-primary btn-sm" onclick="abrirModalCompra('LEVIATHAN \"CHAINS OF ICE\" SHIRT', 'R$ 59,90')">Comprar</button>
+ </div>
+ </div>
+ 
+ <div class="col-md-3 col-sm-6 mb-4">
+ <div class="product-item">
+ <img src="assets/img/knife.jpg" alt="Pocket Knife" class="img-fluid">
+ <h4 class="product-title">LEVIATHAN POCKET KNIFE</h4>
+ <p class="product-price">R$ 29,90</p>
+ <button class="btn btn-primary btn-sm">Comprar</button>
+ </div>
+ </div>
+ <div class="col-md-3 col-sm-6 mb-4">
+ <div class="product-item">
+ <img src="assets/img/cd.jpg" alt="CD Leviathan" class="img-fluid">
+ <h4 class="product-title">Massive Conspiracy Against All Life CD </h4>
+ <p class="product-price">R$ 52,00</p>
+ <button class="btn btn-primary btn-sm">Comprar</button>
+ </div>
+ </div>
+ <div class="col-md-3 col-sm-6 mb-4">
+ <div class="product-item">
+ <img src="assets/img/howl.webp" alt="Vinil Leviathan" class="img-fluid">
+ <h4 class="product-title">Howl Mockery at the Cross - Vinil</h4>
+ <p class="product-price">R$ 39,90</p>
+ <button class="btn btn-primary btn-sm">Comprar</button>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+ <!-- Signup-->
+ <section class="signup-section" id="signup">
+ <div class="container px-4 px-lg-5">
+ <div class="row gx-4 gx-lg-5">
+ <div class="col-md-10 col-lg-8 mx-auto text-center">
+ <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+ <h2 class="text-white mb-5">Inscreva-se para atualizações!</h2>
+ <form class="form-signup" id="contactForm">
+ <div class="row input-group-newsletter">
+ <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="digite o endereço de e-mail..." aria-label="digite o endereço de e-mail..." required /></div>
+ <div class="col-auto"><button class="btn btn-primary" id="submitButton" type="submit">Notifique-me!</button></div>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </section>
+ 
+ <!-- Contact-->
+ <section class="contact-section bg-black" id="contact">
+ <div class="container px-4 px-lg-5">
+ <div class="row gx-4 gx-lg-5 justify-content-center">
+ <div class="col-md-4 mb-3 mb-md-0">
+ <div class="card py-4 h-100">
+ <div class="card-body text-center">
+ <i class="fas fa-map-marked-alt mb-2" style="color: white"></i>
+ <h4 class="text-uppercase m-0" style="font-size: 16px;">Endereço</h4>
+ <hr class="my-4 mx-auto"/>
+ <div class="small text-white">Oakland, California</div>
+ </div>
+ </div>
+ </div>
+ <div class="col-md-4 mb-3 mb-md-0">
+ <div class="card py-4 h-100">
+ <div class="card-body text-center">
+ <i class="fas fa-envelope mb-2" style="color: white;"></i>
+ <h4 class="text-uppercase m-0" style="font-size: 16px;">Email</h4>
+ <hr class="my-4 mx-auto" />
+ <div class="small text-black-50">
+    <a href="#!" style="text-decoration: none; color: white;">whthdtattoo@gmail.com</a></div>
+ </div>
+ </div>
+ </div>
+ 
+ </div>
+ <div class="social d-flex justify-content-center mt-5">
+ <a class="mx-2" href="https://www.instagram.com/wrestplague/"><i class="fab fa-instagram"></i></a>
+ <a class="mx-2" href="https://trvlvthn.bandcamp.com/music"><i class="fab fa-bandcamp"></i></a>
+ </div>
+ </div>
+ </section>
+ 
+<!--Botao Whatsapp-->
+<link rel="stylesheet" href="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-button.css">
+<a id="robbu-whatsapp-button" target="_blank" href="https://wa.me/5598985627333">
+ <img src="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-icon.svg">
+</a>
+
+
+<style>
+    .rwb-tooltip {
+        opacity: 1 !important;
+        color: #ffffff !important;
+        font-size: 14px !important;
+    }
+</style>
+
+
+
+ <!-- Aviso no final -->
+ <section class="bg-black py-4">
+ <div class="container px-4 px-lg-5">
+ <div class="no-shows">
+ <p class="mb-0 text-white-50">Leviathan é um projeto estritamente de estúdio. Não realizamos shows ou apresentações ao vivo.</p>
+ </div>
+ </div>
+ </section>
+ 
+ <!-- Footer-->
+ <footer class="footer bg-black small text-center text-white-50">
+ <div class="container px-4 px-lg-5">Copyright &copy; Leviathan 2025</div>
+ </footer>
+
+
+
+<script>
+        
+
+        const musica = new Audio('assets/audio/IX.mp3');
+        musica.loop = true;
+        musica.volume = 0.7;
+        let iniciada = false;
+
+
+        function tocarMusica() {
+            if (!iniciada) {
+                console.log('Iniciando música...');
+                musica.play().then(() => {
+                    iniciada = true;
+                    console.log('Música tocando!');
+                    // Remove TODOS os listeners
+                    const eventos = ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'];
+                    eventos.forEach(evento => {
+                        document.removeEventListener(evento, tocarMusica);
+                    });
+                }).catch(error => {
+                    console.log('Falhou:', error);
+                });
+            }
+        }
+
+
+
+        // Adiciona MÚLTIPLOS listeners
+        document.addEventListener('click', tocarMusica);
+        document.addEventListener('touchstart', tocarMusica);
+        document.addEventListener('keydown', tocarMusica);
+        document.addEventListener('scroll', tocarMusica);
+        document.addEventListener('mousemove', tocarMusica);
+        
+        console.log(' Música pronta - aguardando primeira interação...');
+    </script>
+
+
+<script>
+    const splash = document.getElementById('splash-screen');
+    const main = document.getElementById('main-content');
+    
+    splash.addEventListener('click', function() {
+        // ADICIONA A ANIMAÇÃO
+        splash.classList.add('splash-exit');
+        
+        // Espera a animação terminar
+        setTimeout(() => {
+            splash.style.display = 'none';
+            main.style.display = 'block';
+            
+            // Toca a música
+            const musica = new Audio('assets/audio/IX.mp3');
+            musica.loop = true;
+            musica.volume = 0.7;
+            musica.play().catch(e => console.log('Música precisa de clique'));
+        }, 1500); 
+    });
+</script>
+    
+    
+    
+ <!-- Bootstrap core JS-->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+ <!-- Scripts personalizados -->
+ <script>
+ // Navbar shrink function
+ window.addEventListener('scroll', function() {
+ if (window.scrollY > 50) {
+ document.querySelector('.navbar').classList.add('shrink');
+ } else {
+ document.querySelector('.navbar').classList.remove('shrink');
+ }
+ });
+ 
+ // Form submission
+ document.getElementById('contactForm').addEventListener('submit', function(e) {
+ e.preventDefault();
+ alert('Obrigado por se inscrever! Você receberá nossas atualizações em breve.');
+ this.reset();
+ });
+ </script>
+
+
+</body>
+</html>
